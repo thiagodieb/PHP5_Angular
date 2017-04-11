@@ -2,16 +2,28 @@
 session_cache_expire(1);
 session_start();
 include '../autoload.php';
+
+use Classes\Model\Autenticacao;
+
 $request = $_REQUEST;
 
-$email = "admin@admin.com";
-$senha = "admin";
+if($request['acao'] == 'logout'){
+	unset($_SESSION['usuario']);
+	
+}
 
-if( $email == $request['email'] && $senha === $request['senha'] ){
-    $_SESSION['usuario'] = $request['email'];
-    header("Location:/projeto13/index.php");
+$autenticacao = new Autenticacao();
+$result = $autenticacao->verificarUsuario($request);
+
+if($result){
+
+    $_SESSION['usuario'] = $result->getEmail();
+    header("Location:/projeto14/index.php");
+
 }else{
+
     header("Location:../template/form-login.php");
+
 }
 
 

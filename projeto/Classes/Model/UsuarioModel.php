@@ -26,6 +26,12 @@ class UsuarioModel implements CrudInterface {
         $usuarioEntity->setIdade($entity["idade"]);
         if(isset($entity["id"]))
             $usuarioEntity->setId($entity["id"]);
+        
+        if(isset($entity["email"]))
+            $usuarioEntity->setEmail($entity["email"]);        
+
+        if(isset($entity["senha"]))
+            $usuarioEntity->setSenha($entity["senha"]);                
         return $usuarioEntity;
     }
 
@@ -65,14 +71,34 @@ class UsuarioModel implements CrudInterface {
         
         $usuario->setNome($resultado[0]["nome"]);
         $usuario->setIdade($resultado[0]["idade"]);
+        $usuario->setEmail($resultado[0]["email"]); 
         $usuario->setId($resultado[0]["id"]);
+        
+        return $usuario;
+    }
+
+    public function logar($entity){
+        $sql = "SELECT * FROM tb_usuario where email = '{$entity->getEmail()}'";
+        $resultado = $this->con->executarQuery($sql);
+        $usuario = new UsuarioEntity();
+        
+        if(@$resultado[0]["senha"] === $entity->getSenha()){
+            $usuario->setNome($resultado[0]["nome"]);
+            $usuario->setEmail($resultado[0]["email"]); 
+            $usuario->setEmail($resultado[0]["senha"]); 
+            $usuario->setId($resultado[0]["id"]);   
+        }else{
+            return false;
+        }
         
         return $usuario;
     }
 
     public function editar($entity) {
         $sql = "UPDATE tb_usuario SET nome = '{$entity->getNome()}', "
-        . "idade =  {$entity->getIdade()} where id = {$entity->getId()}";
+        ." email = '{$entity->getEmail()}' , "
+        ." senha = '{$entity->getSenha()}' , "
+        ." idade =  {$entity->getIdade()} where id = {$entity->getId()}";
 
         try {
             $this->con->inserirQuery($sql);
