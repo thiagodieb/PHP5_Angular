@@ -1,10 +1,13 @@
 <?php
+
 namespace Classes\Entity;
 
-class UsuarioEntity{
+class UsuarioEntity {
+
+    private $id;
     private $nome;
     private $idade;
-    
+
     function getNome() {
         return utf8_encode($this->nome);
     }
@@ -21,5 +24,12 @@ class UsuarioEntity{
         $this->idade = $idade;
     }
 
-}
+    function getId() {
+        return $this->id;
+    }
 
+    function setId($id) {
+        $this->id = $id;
+    }
+
+}
