@@ -4,11 +4,11 @@ namespace Classes\Entity;
 
 class UsuarioEntity {
 
-    private $id;
-    private $nome;
-    private $idade;
-    protected $email;
-    protected $senha;
+    public $id;
+    public $nome;
+    public $idade;
+    public $email;
+    private $senha;
 
     function getNome() {
         return utf8_encode($this->nome);

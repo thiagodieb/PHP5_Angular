@@ -18,7 +18,7 @@ $result = $autenticacao->verificarUsuario($request);
 if($result){
 
     $_SESSION['usuario'] = $result->getEmail();
-    header("Location:/projeto14/index.php");
+    header("Location:/projeto15/index.php");
 
 }else{
 

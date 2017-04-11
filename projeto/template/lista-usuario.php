@@ -47,6 +47,12 @@ $usuarios = $usuario->listar();
                             Deletar
                         </a>
                     </td>
+                    <td>
+                        <a class="btn btn-primary" 
+                            href="../Controllers/usuarioController.php?id=<?= $usuario["id"] ?>&acao=v" >
+                            Visualizar
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
