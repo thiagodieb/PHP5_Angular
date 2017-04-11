@@ -18,7 +18,7 @@ class Mysql {
     public function connect() {
         $arrayConexao = array(
             "host" => "localhost",
-            "dbname" => "db_projeto",
+            "dbname" => "php_angular",
             "username" => "root",
             "password" => ""
         );

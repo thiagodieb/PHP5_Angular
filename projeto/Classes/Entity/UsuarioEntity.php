@@ -7,6 +7,8 @@ class UsuarioEntity {
     private $id;
     private $nome;
     private $idade;
+    protected $email;
+    protected $senha;
 
     function getNome() {
         return utf8_encode($this->nome);
@@ -30,6 +32,22 @@ class UsuarioEntity {
 
     function setId($id) {
         $this->id = $id;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function getSenha() {
+        return $this->senha;
+    }
+
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
+    function setSenha($senha) {
+        $this->senha = $senha;
     }
 
 }

@@ -2,9 +2,10 @@
 include './../autoload.php';
 
 use Classes\Model\UsuarioModel;
-
+use Classes\Model\Autenticacao;
 $usuario = new UsuarioModel();
-
+$ve = new Autenticacao();
+$ve->verificaLogin();
 $usuarios = $usuario->listar();
 ?>
 <link rel="stylesheet" type="text/css" 

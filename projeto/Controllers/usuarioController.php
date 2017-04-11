@@ -1,9 +1,7 @@
 <?php
-
 include '../autoload.php';
 
 use Classes\Model\UsuarioModel;
-
 $request = $_REQUEST;
 
 $usuarioModel = new UsuarioModel();
