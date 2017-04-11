@@ -38,9 +38,7 @@ class UsuarioModel implements CrudInterface {
         }
     }
 
-    public function editar($entity) {
-        
-    }
+    
 
     public function listar() {
         $sql = "SELECT * FROM tb_usuario;";
@@ -58,6 +56,10 @@ class UsuarioModel implements CrudInterface {
         } catch (Exception $exc) {
             echo $exc->getMessage();
         }
+    }
+
+    public function editar($entity) {
+        
     }
 
 }
