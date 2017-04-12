@@ -63,10 +63,14 @@ class UsuarioModel implements CrudInterface {
         }
     }
     
-    public function hidratar($id){
+    public function hidratar($id,$returnArray=false){
         $sql = "SELECT * FROM tb_usuario where id = {$id}";
         $resultado = $this->con->executarQuery($sql);
-         
+        
+        if($returnArray){
+            return $resultado;
+        }
+
         $usuario = new UsuarioEntity();
 
         $usuario->setNome($resultado[0]["nome"]);

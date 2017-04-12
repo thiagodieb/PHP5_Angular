@@ -8,7 +8,7 @@ class UsuarioEntity {
     public $nome;
     public $idade;
     public $email;
-    private $senha;
+    public $senha;
 
     function getNome() {
         return utf8_encode($this->nome);

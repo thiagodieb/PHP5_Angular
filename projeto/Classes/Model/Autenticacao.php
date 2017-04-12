@@ -13,7 +13,7 @@ class Autenticacao {
     public function verificaLogin(){
         session_start();
         if(!isset($_SESSION['usuario'])){
-            header('Location:/projeto15/template/form-login.php');
+            header('Location:template/form-login.php');
         }
     }
 

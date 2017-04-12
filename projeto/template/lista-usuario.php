@@ -10,6 +10,40 @@ $usuarios = $usuario->listar();
 ?>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
+<script type="text/javascript">
+    function confirmarVisualizacao(id){
+        console.log(id);
+    
+        var resposta = confirm("Você realmente deseja Visualizar ?");
+
+        if (resposta == true) {
+            var url = "../Controllers/usuarioController.php?id="+id+"&acao=v";
+            console.log(url);
+            open(url,'_self');
+        } 
+    }
+    function confirmarExclusao(id){
+        console.log(id);
+    
+        var resposta = confirm("Você realmente deseja Excluir ?");
+
+        if (resposta == true) {
+            var url = "../Controllers/usuarioController.php?id="+id+"&acao=d";
+            console.log(url);
+            open(url,'_self');
+        } 
+    }
+
+    function confirmar(url,texto){
+        var resposta = confirm(texto);
+
+        if (resposta == true) {
+            console.log(url);
+            open(url,'_self');
+        } 
+    }
+</script>
+
 <div class="container bs-docs-container">
     <div class="row"> 
  
@@ -43,13 +77,13 @@ $usuarios = $usuario->listar();
                     </td>
                     <td>
                         <a class="btn btn-danger" 
-                            href="../Controllers/usuarioController.php?id=<?= $usuario["id"] ?>&acao=d" >
+                            href="javascript:confirmar('../Controllers/usuarioController.php?id=<?=$usuario['id']?>&acao=d','Você realmente deseja Excluir ?');">
                             Deletar
                         </a>
                     </td>
                     <td>
                         <a class="btn btn-primary" 
-                            href="../Controllers/usuarioController.php?id=<?= $usuario["id"] ?>&acao=v" >
+                            href="javascript:confirmar('../Controllers/usuarioController.php?id=<?=$usuario['id']?>&acao=v','Você realmente deseja Visualizar informações do usuário ?');">
                             Visualizar
                         </a>
                     </td>
