@@ -1,16 +1,38 @@
 <?php 
+session_start();
 include './../autoload.php';
 
 use Classes\Model\UsuarioModel;
 use Classes\Model\Autenticacao;
 $usuario = new UsuarioModel();
-$ve = new Autenticacao();
-$ve->verificaLogin();
 $usuarios = $usuario->listar();
-?>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
+$user = $_SESSION['usuario'];
+
+?>
+ 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <script type="text/javascript">
+
+    window.addEventListener('unload',function(){
+            console.log("saindo da pagina......");
+    });
+
+/*    var params = new URLSearchParams(window.location.search);
+
+   function boasVindas(login){
+        if(login != null){
+            alert('Você, '+login+' muito bem vindo!');
+        }
+    }
+*/
+//    boasVindas(params.get('login'));
+     
+    window.onbeforeunload = function(){
+        return '';
+    };
+      
+
     function confirmarVisualizacao(id){
         console.log(id);
     
@@ -42,6 +64,15 @@ $usuarios = $usuario->listar();
             open(url,'_self');
         } 
     }
+
+
+    function msgBoasVindas(){
+        if(<?php echo $user['login']?>){
+            alert("Olá, <?php echo $user['nome']?>, seja bem vindo ");
+        }
+        
+    }
+    msgBoasVindas();
 </script>
 
 <div class="container bs-docs-container">
@@ -51,7 +82,7 @@ $usuarios = $usuario->listar();
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                      <li role="presentation" ><a href="form-usuario.php">Novo Usuário</a></li>
-                     <li role="presentation" ><a href="../Controllers/loginController.php">Logout</a></li>
+                     <li role="presentation" ><a href="../Controllers/loginController.php?acao=logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -66,9 +97,39 @@ $usuarios = $usuario->listar();
             </thead>
             <tbody>
                 <?php foreach( $usuarios as $usuario): ?>
+                 <div id="bloco_<?= $usuario["id"] ?>" style="display:none">
+                    <?= $usuario["nome"] ?>
+
+                     <form action="../Controllers/usuarioController.php" method="post">
+                        <input type="hidden" name="id" value="<?= $usuario['id'] ?>"/>
+             
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input class="form-control" type="text" name="nome" 
+                                   value="<?= $usuario['nome'] ?>"/>
+                        </div>
+             
+                        <div class="form-group">
+                            <label>Idade</label>
+                            <input class="form-control" type="number" name="idade"
+                                   value="<?= $usuario['idade']?>"/>
+                        </div>
+                        <input type="submit" class="btn" value="Salvar usuário" />
+                        <a class="btn btn-primary cancel" 
+                           href="javascript:esconder('bloco_<?= $usuario['id']?>')" >
+                            Cancelar
+                        </a>
+                     </form>
+                </div>
                 <tr>
-                    <td><?= ($usuario["nome"]) ?></td>
+                    <td class="nome"><?= ($usuario["nome"]) ?></td>
                     <td><?= $usuario["idade"] ?></td>
+                    <td>
+                        <a class="btn btn-primary edicao" 
+                           href="#" text="<?= $usuario["id"]?>">
+                            Editar  Rápida
+                        </a>
+                    </td>
                     <td>
                         <a class="btn btn-primary" 
                            href="form-usuario.php?id=<?= $usuario["id"] ?>" >
@@ -93,3 +154,11 @@ $usuarios = $usuario->listar();
         </table>
     </div>
 </div>
+<?php
+    if($user['login'] == true){
+        $_SESSION['usuario']['login'] =    "false";
+    }
+
+?>
+
+<script type="text/javascript" src="js/script.js"></script>

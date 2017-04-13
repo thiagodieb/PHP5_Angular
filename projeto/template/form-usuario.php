@@ -27,7 +27,7 @@ if(isset($_GET["id"])){
  
             <div class="form-group">
                 <label>Nome</label>
-                <input class="form-control" type="text" name="Nome" 
+                <input class="form-control" type="text" name="nome" 
                        value="<?= $usuario->getNome() ?>"/>
             </div>
  

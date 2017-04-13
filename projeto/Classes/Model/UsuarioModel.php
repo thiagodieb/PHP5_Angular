@@ -22,7 +22,7 @@ class UsuarioModel implements CrudInterface {
 
     public function popular($entity) {
         $usuarioEntity = new UsuarioEntity();
-        $usuarioEntity->setNome($entity["Nome"]);
+        $usuarioEntity->setNome($entity["nome"]);
         $usuarioEntity->setIdade($entity["idade"]);
         if(isset($entity["id"]))
             $usuarioEntity->setId($entity["id"]);

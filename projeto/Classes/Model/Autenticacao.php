@@ -14,6 +14,8 @@ class Autenticacao {
         session_start();
         if(!isset($_SESSION['usuario'])){
             header('Location:template/form-login.php');
+        }else{
+            header('Location:template/lista-usuario.php');
         }
     }
 
