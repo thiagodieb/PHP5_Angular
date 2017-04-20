@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS para iniciantes</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/angular.min.js"></script>
+</head>
+<body ng-app="meuApp">
+
+<div class="container bs-docs-container" ng-controller="primeiroController">
+<h1>Primeiro Controller</h1>
+    <div class="row">
+        <div class="form-group">
+            <label>Nome</label><br>
+            <input type="text" ng-model="name"><br>
+        </div>
+        <div class="form-group">
+            <label>Sobrenome</label><br>
+            <input type="text" ng-model="lastname">
+
+        </div>
+  
+        <br>
+    </div>    
+</div>
+
+<div class="container bs-docs-container" ng-controller="segundoController">
+<h1>Segundo Controller</h1>
+    <div class="row">
+        <div class="form-group">
+            <label>Nome</label><br>
+            <input type="text" ng-model="name"><br>
+        </div>
+        <div class="form-group">
+            <label>Sobrenome</label><br>
+            <input type="text" ng-model="lastname">
+
+        </div>
+  
+        <br>
+    </div>    
+</div>
+
+<script type="text/javascript" src="js/PrimeiroController.js"></script>
+</body>
+</html>
