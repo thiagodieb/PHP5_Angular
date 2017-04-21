@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS para iniciantes</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="meuApp" ng-controller="c">
+	<h1 ng-show="time">{{time}}...</h1>
+	<table class="table table-striped">
+        <thead>
+			<tr>
+				<td>Nome</td>
+				<td>Nota</td>
+				<td>Idade</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="aluno in alunos">
+				<td>{{aluno.nome}}</td>
+				<td>{{aluno.nota}}</td>
+				<td>{{aluno.idade}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<button ng-click="load()">Carregar</button>
+</div>
+<script>
+var app = angular.module('meuApp', []);
+app.controller('c', function($scope, $http, $timeout,$interval) {
+	$scope.load = function(){
+		$scope.time = 3;
+
+		$s = $interval(function(){
+			$scope.time--;
+			if($scope.time<=0){
+				$interval.cancel($s);
+				$scope.time = "";
+			}
+		},1000);
+
+		$timeout(function(){
+		    $http.get("arquivo.json")
+		    .then(function(response) {
+		    	console.log(response.data);
+		    	$scope.alunos = response.data;
+		    });
+
+
+	    },3000);	
+	}
+});
+</script>

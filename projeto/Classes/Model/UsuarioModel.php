@@ -112,4 +112,16 @@ class UsuarioModel implements CrudInterface {
         }
     }
 
+    public function editarjson($entity) {
+        $sql = "UPDATE tb_usuario SET nome = '{$entity->getNome()}', "
+        ." idade =  {$entity->getIdade()} where id = {$entity->getId()}";
+        //var_dump($sql);
+        try {
+            $this->con->inserirQuery($sql);
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+        }
+    }
+
+
 }

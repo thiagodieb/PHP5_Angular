@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<div class="container bs-docs-container" ng-app="meuApp" >
+<div class="container bs-docs-container" ng-app>
 <h1>Filter</h1>
     <div class="row">
-        <h1>Caixa Alta: {{name | uppercase }}</h1>
-        <h1>Moeda: {{num | currency }}</h1>
+        <h1>Caixa Alta: {{ name | uppercase }}</h1>
+        <h1>Moeda: {{ num | currency }}</h1>
         <div class="form-group">
             <label>Nome</label><br>
             <input type="text" ng-model="name"><br>
@@ -24,9 +24,6 @@
         </div>
         <br>
     </div>
-     
-    
 </div>
-<script type="text/javascript" src="template/js/PrimeiroController.js"></script>
 </body>
 </html>

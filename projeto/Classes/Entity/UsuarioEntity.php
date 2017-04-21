@@ -23,7 +23,7 @@ class UsuarioEntity {
     }
 
     function setIdade($idade) {
-        $this->idade = $idade;
+        $this->idade = (int) $idade;
     }
 
     function getId() {
@@ -31,7 +31,7 @@ class UsuarioEntity {
     }
 
     function setId($id) {
-        $this->id = $id;
+        $this->id = (int) $id;
     }
 
     function getEmail() {
