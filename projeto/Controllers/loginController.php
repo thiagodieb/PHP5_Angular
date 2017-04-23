@@ -7,7 +7,7 @@ use Classes\Model\Autenticacao;
 
 $request = $_REQUEST;
 
-if($request['acao'] == 'logout'){
+if(isset($request['acao']) && $request['acao'] == 'logout'){
 	unset($_SESSION['usuario']);
 	header("Location:../template/form-login.php");
 	exit();
@@ -22,11 +22,11 @@ if($result){
 	$_SESSION['usuario']["nome"] = $result->getNome();
 	$_SESSION['usuario']["login"] = true;
 	
-    header("Location:../template/lista-usuario.php?login=".$result->getNome());
+    header("Location:../template/index.php?login=".$result->getNome());
 
 }else{
-
-    header("Location:../template/form-login.php");
+	echo ("false");
+    //header("Location:../template/form-login.php");
 
 }
 

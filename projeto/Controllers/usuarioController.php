@@ -33,7 +33,10 @@ if (isset($request['id']) && isset($request['acao'])) {
     $user = json_decode($request['data']);
     //$user = json_decode($request['data'],true);
     $usuarioEntity = $usuarioModel->popular((Array) $user);
-    $usuarioModel->editarjson($usuarioEntity);
+    if($user->id)
+        $usuarioModel->editarjson($usuarioEntity);
+    else
+        $usuarioModel->salvar($usuarioEntity);
 }
 else if (isset($request['id']) && $request["id"] != ""){
     $usuarioEntity = $usuarioModel->popular($request);

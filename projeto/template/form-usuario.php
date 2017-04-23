@@ -11,29 +11,20 @@ if(isset($_GET["id"])){
 }
 ?>
 
-<div class="container bs-docs-container">
-    <div class="row">
+     <div class="row">
 
-        <div class="navbar navbar-default">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                     <li role="presentation" ><a href="lista-usuario.php">Lista de Usuário</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <form action="../Controllers/usuarioController.php" method="post">
+        <form ng-submit="salvar()">
             <input type="hidden" name="id" value="<?= $usuario->getId() ?>"/>
  
             <div class="form-group">
                 <label>Nome</label>
-                <input class="form-control" type="text" name="nome" 
-                       value="<?= $usuario->getNome() ?>"/>
+                <input class="form-control" type="text" ng-model="usuario.nome" 
+                       />
             </div>
  
             <div class="form-group">
                 <label>Idade</label>
-                <input class="form-control" type="number" name="idade"
+                <input class="form-control" type="number" ng-model="usuario.idade"
                        value="<?= $usuario->getIdade() ?>"/>
             </div>
 
@@ -41,13 +32,13 @@ if(isset($_GET["id"])){
 
             <div class="form-group">
                 <label>Email</label>
-                <input class="form-control" type="email" name="email"
+                <input class="form-control" type="email" ng-model="usuario.email"
                        value="<?= $usuario->getEmail() ?>"/>
             </div>
 
             <div class="form-group">
                 <label>Senha</label>
-                <input class="form-control" type="password" name="senha"
+                <input class="form-control" type="password" ng-model="usuario.senha"
                       value="<?= $usuario->getSenha() ?>"/>
             </div>
 
@@ -55,4 +46,3 @@ if(isset($_GET["id"])){
             <input type="submit" class="btn" value="Salvar usuário" />
          </form>
     </div>
-</div>

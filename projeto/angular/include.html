@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS para iniciantes</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/angular.min.js"></script>
+</head>
+<body> 
+
+<div class="container bs-docs-container"  ng-app="meuApp" ng-controller="c">
+  <h1>Includes</h1>
+  <input ng-model="valor_teste"/>
+  <div class="row">
+  	  <button ng-click="ok='true'"> Adicionar HTML</button>
+      <div ng-show="ok" ng-include="'event.html'">ss</div>
+  </div>
+  <br/>
+  <div class="row">
+  	  <button ng-click="ok2='true'"> Adicionar HTML 2 </button>
+      <div ng-show="ok2" ng-include="'include_file.html'"></div>
+  </div>
+  <br/>
+  <div class="row">
+  	  <button ng-click="ok3='true'"> Adicionar HTML 3 </button>
+      <div ng-show="ok3" ng-include="'http://cursos.localhost/projeto/template/form-usuario.php'"></div>
+  </div>
+</div>
+
+<script>
+	var app = angular.module('meuApp', []);
+	app.controller("c",function($scope){
+	$scope.variavel_controler_original = "variável do controller do original";
+	});
+</script>
+
+</body>
+</html>
