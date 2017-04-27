@@ -14,13 +14,12 @@
           <p>Relação dos alunos com suas notas do ano.</p>
          </div>
   </div>
-  <div class="container" ng-init="carregarLista()">
+  <div class="container">
       <div class="row">
         <div class="col-12 col-md-3 push-md-9 bd-sidebar">
           <form>
             <div class="form-group">
               <label for="nome">Nome completo</label>
-              <input type="hidden" ng-model="aluno.id">
               <input type="text" class="form-control" ng-model="aluno.nome" placeholder="Nome Completo">
             </div>
             <div class="form-group">
@@ -53,12 +52,7 @@
                 <input type="number" class="form-control" ng-model="aluno.nota4" placeholder="0">
               </div>                    
             </div>
-            <div class="row" ng-show="editar">
-              <div class="col-6">
-                <button ng-click="salvarEdicao()" class="btn btn-secondary">Salvar</button>
-              </div>
-            </div>
-            <div class="row" ng-hide="editar">
+            <div class="row">
               <div class="col-6">
                 <button ng-click="adicionarRascunho()" class="btn btn-secondary">Rascunho</button>
               </div>
@@ -93,8 +87,8 @@
                 <td>{{aluno.nota3}}</td>
                 <td>{{aluno.nota4}}</td>
                 <td>
-                  <a href="#" ng-click="popular(aluno.id)"><span class="glyphicon glyphicon-pencil">editar</span></a>
-                  <a href="#" ng-click="excluir(aluno.id)"><span class="glyphicons glyphicons-bin">excluir</span></a>
+                  <a ng-click="popular(aluno.id)"><span class="glyphicon glyphicon-pencil">e</span></a>
+                  <a ng-click="excluir(aluno.id)"><span class="glyphicons glyphicons-bin">d</span></a>
                 </td>
               </tr> 
               

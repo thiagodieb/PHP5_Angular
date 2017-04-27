@@ -14,34 +14,11 @@ class NotaController {
             case 'listar':
                 $this->listar();
                 break;    
-            case 'editar':
-                $this->editar();
-                break;                    
-            case 'excluir':
-                $this->excluir();
-                break;                   
             default:
                 exit("error page");
                 break;
         }
 
-    }
-
-    private function editar(){
-        $notaModel = new NotaModel();
-        if(isset($_REQUEST['data'])){
-            $aluno = json_decode($_REQUEST['data'],true);
-            $notaModel->editar($aluno[0]);
-        }
-        
-    }
-
-    private function excluir(){
-        $notaModel = new NotaModel();
-        if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
-            $notaModel->excluir($_REQUEST);
-        }
-        
     }
 
     private function salvar(){
