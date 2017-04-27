@@ -88,9 +88,9 @@ $usuarios = $usuario->listar();
             <div class="navbar navbar-default">
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li role="presentation" ><a href="#/">Principal</a></li>
-                         <li role="presentation" ><a href="#/usuario/adicionar">Novo Usuário</a></li>
-                         <li role="presentation" ><a href="#/logout">Logout</a></li>
+                         <li><a href="#/">Principal</a></li>
+                         <li><a href="#/usuario/adicionar">Novo Usuário</a></li>
+                         <li><a href="#/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>

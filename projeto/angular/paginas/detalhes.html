@@ -1,2 +1,19 @@
 <h1>Página dos detalhes</h1>
 <div>{{conteudo}}</div>
+<script type="text/javascript">
+	
+  app.config(function($routeProvider) {
+    $routeProvider
+      .when('/destalhes/novo', {
+        templateUrl : 'paginas/principal.html',
+        controller  : 'pController'
+      })
+
+      .when('/detalhes/excluir', {
+        templateUrl : 'paginas/detalhes.html',
+        controller  : 'dController'
+      });
+  });
+
+
+</script>
