@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Avaliação - PHP e AngularJS</title>
+  <link rel="stylesheet" type="text/css" href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css">
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-app="sistemaNotas" ng-controller="notasController">
+  <div class="bd-pageheader">
+        <div class="container">
+          <h1>Sistema de Notas</h1>
+          <p>Relação dos alunos com suas notas do ano.</p>
+         </div>
+  </div>
+  <div class="container" ng-init="carregarLista()">
+      <div class="row">
+        <div class="col-12 col-md-3 push-md-9 bd-sidebar">
+          <form>
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="hidden" ng-model="aluno.id">
+              <input type="text" class="form-control" ng-model="aluno.nome" placeholder="Nome Completo">
+            </div>
+            <div class="form-group">
+                <label for="exampleSelect1">Turma</label>
+                <select class="form-control" ng-model="aluno.turma">
+                  <option>1-A</option>
+                  <option>1-B</option>
+                  <option>1-C</option>
+                  <option>2-A</option>
+                  <option>2-B</option>
+                </select>
+            </div>       
+            <div class="row">
+              <div class="form-group col-6 ">
+                <label for="nota1">1° Bimestre</label>
+                <input type="number" class="form-control" ng-model="aluno.nota1" placeholder="0">
+              </div>
+              <div class="form-group col-6">
+                <label for="nota2">2° Bimestre</label>
+                <input type="number" class="form-control" ng-model="aluno.nota2" placeholder="0">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="nota3">3° Bimestre</label>
+                <input type="number" class="form-control" ng-model="aluno.nota3" placeholder="0">
+              </div> 
+              <div class="form-group col-6">
+                <label for="nota4">4° Bimestre</label>
+                <input type="number" class="form-control" ng-model="aluno.nota4" placeholder="0">
+              </div>                    
+            </div>
+            <div class="row" ng-show="editar">
+              <div class="col-6">
+                <button ng-click="salvarEdicao()" class="btn btn-secondary">Salvar</button>
+              </div>
+            </div>
+            <div class="row" ng-hide="editar">
+              <div class="col-6">
+                <button ng-click="adicionarRascunho()" class="btn btn-secondary">Rascunho</button>
+              </div>
+              <div class="col-6">
+                <button ng-click="fecharTurma()" type="button" class="btn btn-success">Fechar Turma</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 col-md-9 pull-md-3 bd-content">
+          <table class="table table-bordered">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>Nome Completo</th>
+                <th>Turma</th>
+                <th>1° Bi</th>
+                <th>2° Bi</th>
+                <th>3° Bi</th>
+                <th>4° Bi</th>
+                <th> --- </th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr ng-repeat="aluno in alunos">
+                <th scope="row">{{aluno.id}}</th>
+                <td>{{aluno.nome}}</td>
+                <td>{{aluno.turma}}</td>
+                <td>{{aluno.nota1}}</td>
+                <td>{{aluno.nota2}}</td>
+                <td>{{aluno.nota3}}</td>
+                <td>{{aluno.nota4}}</td>
+                <td>
+                  <a href="#" ng-click="popular(aluno.id)"><span class="glyphicon glyphicon-pencil">editar</span></a>
+                  <a href="#" ng-click="excluir(aluno.id)"><span class="glyphicons glyphicons-bin">excluir</span></a>
+                </td>
+              </tr> 
+              
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-6"><p>Quantidade de alunos salvos : <b>{{qtTurmas}}</b></p></div>
+            <div class="col-12"><button ng-click="carregarLista()">Carregar lista</button></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</body>
+</html>
