@@ -31,6 +31,11 @@ class Mysql {
                 ->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function executarQuerySimple($sql){
+        $this->connect();
+        return self::$con->query($sql);
+    }
+
     public function inserirQuery($sql){
         $this->connect();
         self::$con->query($sql);
